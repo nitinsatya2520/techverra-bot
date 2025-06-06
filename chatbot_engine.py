@@ -1,7 +1,9 @@
 import json
+import os
 
 def load_data(file_name):
-    with open(f"data/{file_name}", "r", encoding="utf-8") as f:
+    path = os.path.join("data", file_name)
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 company_info = load_data("company.json")
@@ -10,7 +12,6 @@ estimator_info = load_data("estimator.json")
 testimonials_info = load_data("testimonials.json")
 contact_info = load_data("contact.json")
 internship_info = load_data("internships.json")
-
 
 def generate_response(user_input):
     user_input = user_input.lower()
@@ -37,17 +38,19 @@ def generate_response(user_input):
         if service.lower() in user_input:
             return description
 
-    if "estimate" in user_input or "pricing" or "cost" in user_input:
+    if any(keyword in user_input for keyword in ["estimate", "pricing", "cost"]):
         return json.dumps(estimator_info, indent=2)
 
     if "testimonial" in user_input:
         return "\n".join(testimonials_info.get("testimonials", []))
 
     if "contact" in user_input:
-        return f"Email: {contact_info['email']}, Phone: {contact_info['phone']}, WhatsApp: {contact_info['whatsapp']}, Location: {contact_info['location']}"
+        return f"""📧 Email: {contact_info['email']}
+📞 Phone: {contact_info['phone']}
+💬 WhatsApp: {contact_info['whatsapp']}
+📍 Location: {contact_info['location']}"""
 
     if "internship" in user_input:
         return "\n".join(internship_info.get("available_roles", []))
 
     return "I'm here to help with anything about Techverra Solutions. You can ask about services, internships, pricing, or how to contact us!"
-
