@@ -1,0 +1,17 @@
+
+{
+  "Website Development Packages": {
+    "Starter Site (Static 3–5 pages)": 15000,
+    "Business Site (CMS, Admin Panel)": 40000,
+    "E-Commerce Website": 85000
+  },
+  "Add-Ons": {
+    "Homepage Design": "₹2,000 – ₹4,000",
+    "Inner Page (per page)": "₹1,000",
+    "Blog Section": "₹1,500",
+    "Basic SEO Setup": "₹2,000 – ₹3,000",
+    "Live Chat Integration": "₹1,500 – ₹2,500",
+    "WhatsApp Contact Button": "₹500 – ₹1,000",
+    "Contact Form with Email Notification": "₹800 – ₹1,200"
+  }
+}
